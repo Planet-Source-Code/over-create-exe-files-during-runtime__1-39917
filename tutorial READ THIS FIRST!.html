@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>VB: &quot;Create&quot; .exe files during runtime !</title>
+</head>
+<body bgcolor="#dddddd">
+<font face="Arial">
+
+<font size=+2><b><u>VB tutorial: &quot;Create&quot; .exe files during runtime !</u></b></font><p>
+
+Hi everybody ;) This will be a rather small tutorial explaining how to create executable files
+during runtime ! I have to begin by saying that my English isn't that good. But I hope this
+won't be a bar.<p>
+
+<font size="+1"><b><u>Method</u></b></font><p>
+
+Ok. This this tutorial is named &quot;Create&quot; exe files. Creating does not mean compiling!
+What we do is coding an exe file that opens itself for read access during runtime. Then it'll read out
+customizable information we stored at the fileend using another vb project. Uh, this sounds a bit
+complicated and I wished my English was better and would allow me to be more precise ...
+I'll try to make everything more clear by some pictures:<p>
+We use two vb projects. Number one reads out information from its own fileend as explained, number two
+is meant to modify these information:<p>
+<img src="pic1.gif" border=1><br><br>
+<font size="+1"><b><u>Example Project</u></b></font><p>
+This example discribes how to do an project that is able to create an exe file during runtime
+which will display an customizable messagebox. This sounds rather stupid but you'll notice that
+the used method is VERY EFFECTIVE. For example some time ago I coded a patchengine using this bas file.
+This Patchengine compared two files. And if differences were found a new exe file was generated containing
+only these differences. This exe could then be used to apply the found changes to the original file.
+(oh god my English ;( i hope you know what a patchengine does :)<p>
+But let us start right now:<p>
+
+<b>1.1.)</b><ul>Create a new project directory on your harddisk.</ul>
+
+<b>1.2.)</b><ul>Copy the &quot;WriteToReadFromExe.bas&quot; (included in the zip file)
+into this directory.</ul>
+
+<b>1.3.)</b><ul>Start VB, create a new project, add the &quot;WriteToReadFromExe.bas&quot;
+to your project and save it to your directory.
+Use the names suggested by vb (project1.vbp,form1.frm).</ul>
+
+<b>1.4.)</b><ul>Add a command button (Command1) with the following source code:<p>
+<table width="500">
+<tr>
+<td bgcolor="#ffffff">
+<pre><font style='font-face: courier new; font-size:10pt; line-height: 6pt'><font color="0000A0">Private</font> <font color="0000A0">Sub</font> Command1_Click() <br>
+    MsgBox ReadVariable(<font color="FF00FF">&quot;MsgBoxMessage&quot;</font>) <br>
+<font color="0000A0">End</font> <font color="0000A0">Sub</font> <br>
+</font></pre>
+</td>
+</tr>
+</table>
+</ul>
+
+<b>1.5.)</b><ul>Project1 is already done. Save everything and compile "project1.exe" into your directory.
+DO NOT execute the exe file. There will be an error if you click onto Command1 but this doesn't
+mean any problem!! Now close project1.</ul>
+
+<b>2.1.)</b><ul>Create a new project. Name your project "project2" and change the name of the
+Form to "form2". Add the &quot;WriteToReadFromExe.bas&quot; to your project.</ul>
+
+<b>2.2.)</b><ul>Save your project into the SAME directory as you saved project1 to. Use the
+names suggested by vb (form2.frm,project2.vbp)</ul>
+
+<b>2.3.)</b><ul>Add a textbox (text1) and a Command Button (Command1) to your form2 and insert
+the following code:<p>
+<table width="500">
+<tr>
+<td bgcolor="#ffffff">
+<pre><font style='font-face: courier new; font-size:10pt; line-height: 6pt'><font color="0000A0">Private</font> <font color="0000A0">Sub</font> Command1_Click() <br>
+    AddVariable <font color="FF00FF">&quot;MsgBoxMessage&quot;</font>, Text1.Text <br>
+    WriteExeFile <font color="FF00FF">&quot;project1.exe&quot;</font>, <font color="FF00FF">&quot;new.exe&quot;</font> <br>
+<font color="0000A0">End</font> <font color="0000A0">Sub</font> <br>
+</font></pre>
+</td>
+</tr>
+</table>
+</ul>
+
+<b>2.4.)</b><ul>Save the project and compile the &quot;project2.exe&quot; into your directory.</ul>
+
+<b>2.5.)</b><ul>Beliefe it or not ;) We are already done. Close vb. Your directory now should contain
+two .exe files (project1.exe and project2.exe) Execute project2.exe. Insert a Message into the textbox
+and click command1. A third exe file (new.exe) is now created which displays your custom message.</ul><br><br>
+
+Ok that's it. If you've got any questions contact me: <a href="mailto:overkillpage@gmx.net">overkillpage@gmx.net</a><p><br><br>
+I'd like to say thanks to SN[-i-]PER who I meet at #vb on dalnet. He did the testing.<br> And to Chris Buckley. I used his 
+<a href="http://www.Planet-Source-Code.com/vb/scripts/ShowCode.asp?txtCodeId=39832&lngWId=1">code</a> to convert the vb source to html.<br>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br>
+</font>
+</body>
+</html>
